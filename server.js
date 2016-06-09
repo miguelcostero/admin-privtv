@@ -15,12 +15,16 @@ if (typeof ipaddress === "undefined") {
     ipaddress = "127.0.0.1";
 };
 
+//Motor de plantillas
+app.set('view engine', 'pug');
+
 //Archivos estaticos
 app.use('/public', express.static('public'));
+app.use('/public', express.static('bower_components'));
 
 //cargar index
 app.get('/', function (req, res) {
-  res.send("Hola Mundo!")
+  res.render('index', {titulo: 'Administración'});
 })
 
 //ejecucion del server
