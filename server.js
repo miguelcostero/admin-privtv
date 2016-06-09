@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require('path');
 var pug = require('pug');
 
 var app = express();
@@ -16,15 +17,26 @@ if (typeof ipaddress === "undefined") {
 };
 
 //Motor de plantillas
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+//renderizar las vistas
+app.get('/partials/:name', function (req, res)
+ { var name = req.params.name;
+   res.render('partials/' + name);
+});
+
 //Archivos estaticos
-app.use('/public', express.static('public'));
-app.use('/public', express.static('bower_components'));
+app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'bower_components')));
 
 //cargar index
 app.get('/', function (req, res) {
-  res.render('index', {titulo: 'Administración'});
+  res.render('login_index', {titulo: 'Administración'});
+})
+
+app.get('/dashboard', function (req, res) {
+  res.render('dashboard_index', {titlulo: 'Dashboard'})
 })
 
 //ejecucion del server

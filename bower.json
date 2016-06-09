@@ -26,6 +26,8 @@
     "angular": "^1.5.6",
     "angular-route": "^1.5.6",
     "angular-resource": "^1.5.6",
-    "angular-cookie": "^4.1.0"
+    "angular-cookie": "^4.1.0",
+    "angular-cookies": "^1.5.6",
+    "underscore": "^1.8.3"
   }
 }
