@@ -1,35 +1,32 @@
 {
-  "name": "nodejs-Custom-Version-Sample",
-  "version": "1.0.1",
-  "description": "OpenShift Node.js Custom Version Sample Application",
+  "name": "privtv-admin",
+  "version": "0.0.1",
+  "description": "Administracion de privtv",
   "keywords": [
-    "OpenShift",
+    "Privtv",
     "Node.js",
     "application",
-    "openshift"
+    "Admin"
   ],
   "author": {
-    "name": "ramr",
-    "email": "ramr@example.org",
-    "url":  "http://www.openshift.com/"
+    "name": "Priv.TV",
+    "email": "priv2016@gmail.com"
   },
-  "homepage": "http://www.openshift.com/",
+  "homepage": "http://admin-privtv.rhcloud.com/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ramr/nodejs-custom-version-openshift"
+    "url": "https://github.com/miguelcostero/privtv-admin"
   },
-
   "engines": {
     "node": ">= 0.6.0",
     "npm": ">= 1.0.0"
   },
-
   "dependencies": {
-    "express": "*"
+    "express": "*",
+    "pug": "^2.0.0-beta2"
   },
   "devDependencies": {},
   "bundleDependencies": [],
-
   "private": true,
   "main": "server.js"
 }
