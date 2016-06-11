@@ -1,24 +1,31 @@
-div(id="login-page" class="row")
-  .col.s12.z-depth-4.card-panel
-    form(class="login-form")
-      .row
-        .input-field.col.s12.center
-          img(src="public/images/icon.ico" class="circle responsive-img valign profile-image-login")
-          p(class="center login-form-text").
-            PrivTV - Administración
+.wrap-login
+  .container-login
+    div(id="login-page" class="row")
+      .col.s12.z-depth-4.card-panel
+        form(class="login-form" ng-submit="login()")
+          .row
+            .input-field.col.s12.center
+              img(src="public/images/icon.ico" class="circle responsive-img valign profile-image-login")
+              p(class="center login-form-text").
+                PrivTV - Administración
 
-      .row.margin
-        .input-field.col.s12
-          i(class="material-icons prefix") person_outline
-          input(id="username" type="email" ng-model="datos.email" required)
-          label(for="username" class="center-align") Correo Electrónico
+          .row(ng-show="mensaje.length > 0")
+            .col.s12
+              .card-panel.red.darken-4
+                span(class="white-text") {{ mensaje }}
 
-      .row.margin
-        .input-field.col.s12
-          i(class="material-icons prefix") lock_outline
-          input(id="password" type="password" ng-model="datos.password" required)
-          label(for="password") Contraseña
+          .row.margin
+            .input-field.col.s12
+              i(class="material-icons prefix") person_outline
+              input(id="username" type="email" ng-model="datos.email" required)
+              label(for="username" class="center-align") Correo Electrónico
 
-      .row
-        .input-field.col.s12
-          a(href="" class="btn waves-effect waves-light col s12 red" ng-click="login()") Iniciar Sesión
+          .row.margin
+            .input-field.col.s12
+              i(class="material-icons prefix") lock_outline
+              input(id="password" type="password" ng-model="datos.password" required)
+              label(for="password") Contraseña
+
+          .row
+            .input-field.col.s12
+              button(type="submit" class="btn waves-effect waves-light col s12 red") Iniciar Sesión

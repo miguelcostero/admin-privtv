@@ -1,14 +1,17 @@
-html,
-body {
+.wrap-login,
+.container-login {
     height: 100%;
 }
-html {
+
+.wrap-login {
     display: table;
     margin: auto;
 }
-body {
+
+.container-login {
     display: table-cell;
     vertical-align: middle;
+    padding-top: 100px;
 }
 
 .login-form {
@@ -27,4 +30,10 @@ body {
 .login-text {
   margin-top: -6px;
   margin-left: -6px !important;
+}
+
+/* dashboard */
+.nav-wrapper {
+  padding-left: 20px;
+  padding-right: 20px;
 }

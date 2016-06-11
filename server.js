@@ -7,7 +7,7 @@ var app = express();
 //IP  y puerto de la app
 var ipaddress, port;
 ipaddress = process.env.OPENSHIFT_NODEJS_IP || process.env.OPENSHIFT_INTERNAL_IP;
-port      = process.env.OPENSHIFT_NODEJS_PORT || process.env.OPENSHIFT_INTERNAL_PORT || 8080;
+port      = process.env.OPENSHIFT_NODEJS_PORT || process.env.OPENSHIFT_INTERNAL_PORT || 5050;
 
 if (typeof ipaddress === "undefined") {
     //  Log errors on OpenShift but continue w/ 127.0.0.1 - this
@@ -32,11 +32,7 @@ app.use('/public', express.static(path.join(__dirname, 'bower_components')));
 
 //cargar index
 app.get('/', function (req, res) {
-  res.render('login_index', {titulo: 'Administración'});
-})
-
-app.get('/dashboard', function (req, res) {
-  res.render('dashboard_index', {titlulo: 'Dashboard'})
+  res.render('index', {titulo: 'Administración'});
 })
 
 //ejecucion del server

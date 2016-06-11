@@ -5,5 +5,9 @@ angular.module("adminApp", ["ngResource", "ngRoute", "ngCookies"])
         controller: "loginController",
         templateUrl: "partials/login"
       })
+      .when("/dashboard", {
+        controller: "dashboardController",
+        templateUrl: "partials/dashboard"
+      })
       .otherwise("/")
   })

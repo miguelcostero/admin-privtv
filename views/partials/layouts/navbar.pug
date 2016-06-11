@@ -1,0 +1,19 @@
+// - layouts/navbar.pug
+
+.navbar-fixed
+  nav(class="grey darken-3")
+    .nav-wrapper
+      a(href="/" class="brand-logo") Administración
+      ul(class="right hide-on-med-and-down")
+        li
+          a(href="#") Películas
+        li
+          a(href="#") Clientes
+        li
+          a(href="#") Configuración
+        li
+          a(ng-click="logout()")
+            i(class="material-icons") exit_to_app
+
+.container
+  block content
