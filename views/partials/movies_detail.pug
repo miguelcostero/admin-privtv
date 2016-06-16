@@ -1,0 +1,52 @@
+extends layouts/navbar.pug
+
+block content
+  div
+    .row(ng-show="mensaje.length > 0")
+      .col.s12
+        .card-panel.green.white-text
+          p {{mensaje}}
+    .row
+      form(class="col s12" ng-submit="actualizar()")
+        .row
+          .col.s12
+            h4 Id Pelicula: {{ pelicula.idPelicula }}
+          .input-field.col.s12
+            input(id="nombre" type="text" class="validate" value="{{ pelicula.nombre }}" ng-model="pelicula.nombre")
+            label(for="nombre" class="active" data-error="Error") Nombre
+          .input-field.col.s12
+            textarea(id="sipnosis" class="materialize-textarea" class="validate" rows="10" max-length="256" ng-model="pelicula.sipnosis") {{ pelicula.sipnosis }}
+            label(for="sipnosis" class="active" data-error="Error") Sipnosis
+          .input-field.col.s6
+            input(id="idioma" type="text" class="validate" value="{{ pelicula.idioma }}" ng-model="pelicula.idioma")
+            label(for="idioma" class="active" data-error="Error") Idioma
+          .input-field.col.s6
+            input(id="ano_publicacion" type="text" class="validate" value="{{ pelicula.ano_publicacion }}" length="4" ng-model="pelicula.ano_publicacion")
+            label(for="ano_publicacion" class="active" data-error="Error") Año de Publicación
+          .input-field.col.s6
+            input(id="duracion" type="number" class="validate" value="{{ pelicula.duracion }}" ng-model="pelicula.duracion")
+            label(for="duracion" class="active" data-error="Error") Duración
+          .input-field.col.s6
+            input(id="clasificacion" type="text" class="validate" value="{{ pelicula.clasificacion }}" ng-model="pelicula.clasificacion")
+            label(for="clasificacion" class="active" data-error="Error") Clasificación
+          .input-field.col.s6
+            input(id="formato" type="text" class="validate" value="{{ pelicula.formato }}" ng-model="pelicula.formato")
+            label(for="formato" class="active" data-error="Error") Formáto
+          .input-field.col.s6
+            input(id="fecha_publicacion" type="text" class="validate" value="{{ pelicula.fecha_hora_publicacion }}" ng-model="pelicula.fecha_hora_publicacion")
+            label(for="fecha_publicacion" class="active" data-error="Error") Fecha de Publicación
+          .input-field.col.s12
+            input(id="movie_source" type="text" class="validate" value="{{ pelicula.movie_source }}" ng-model="pelicula.movie_source")
+            label(for="movie_source" class="active" data-error="Error") Ubicación de la película
+          .input-field.col.s12
+            input(id="trailer_source" type="text" class="validate" value="{{ pelicula.trailer_source }}" ng-model="pelicula.trailer_source")
+            label(for="trailer_source" class="active" data-error="Error") Ubicación del trailer
+
+          button(type="submit" class="btn waves-effect waves-light") guardar
+            i(class="material-icons left") save
+
+          button(type="reset" class="btn waves-effect waves-effect red darken-4 right") limpiar
+            i(class="material-icons left") delete
+
+  script
+    include ./js/movie_detail.js

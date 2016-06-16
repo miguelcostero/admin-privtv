@@ -1,0 +1,19 @@
+extends layouts/navbar.pug
+
+block content
+  .row(ng-repeat="pelicula in peliculas")
+    .col.s12
+      .card.grey.lighten-4.hoverable
+        .card-content.black-text
+          .row
+            .col.s9
+              span(class="card-title")
+                b {{ pelicula.nombre }}
+              p {{ pelicula.sipnosis }}
+              br
+              p(class="grey-text text-darken-2") {{ pelicula.Generos }}
+            .col.s3
+              img(ng-src="{{pelicula.poster}}" class="responsive-img")
+        .card-action
+          a(ng-href="#/dashboard/movies/{{ pelicula.idPelicula }}" class="waves-effect waves-light btn orange darken-3") Editar
+          a(ng-click="eliminar(pelicula.idPelicula)" confirmation-needed="¿Desea eliminar esta pelicula?" class="waves-effect waves-light btn red darken-4") Eliminar

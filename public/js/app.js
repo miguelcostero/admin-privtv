@@ -9,5 +9,13 @@ angular.module("adminApp", ["ngResource", "ngRoute", "ngCookies"])
         controller: "dashboardController",
         templateUrl: "partials/dashboard"
       })
+      .when("/dashboard/movies", {
+        controller: "moviesController",
+        templateUrl: "partials/movies"
+      })
+      .when("/dashboard/movies/:id_movie", {
+        controller: "moviesController",
+        templateUrl: "partials/movies_detail"
+      })
       .otherwise("/")
   })
