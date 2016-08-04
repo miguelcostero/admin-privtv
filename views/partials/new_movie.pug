@@ -1,0 +1,78 @@
+extends layouts/navbar.pug
+
+block content
+  div
+    .row(ng-show="mensaje.length > 0")
+      .col.s12
+        .card-panel.green.white-text
+          p {{mensaje}}
+    .row
+      form(class="col s12" ng-submit="nueva_pelicula()")
+        .row
+          .col.s12
+            h2 Nueva Película
+          .input-field.col.s12
+            input(id="nombre" type="text" class="validate" ng-model="nueva.nombre" required)
+            label(for="nombre" class="" data-error="Valor inválido.") Nombre
+          .input-field.col.s12
+            textarea(id="sipnosis" class="materialize-textarea" class="validate" rows="10" max-length="256" ng-model="nueva.sipnosis" required)
+            label(for="sipnosis" class="" data-error="Valor inválido.") Sipnosis
+          .input-field.col.s6
+            input(id="idioma" type="text" class="validate" ng-model="nueva.idioma" required)
+            label(for="idioma" class="" data-error="Valor inválido.") Idioma
+          .input-field.col.s6
+            input(id="ano_publicacion" type="text" class="validate" length="4" ng-model="nueva.ano_publicacion" required ng-minlength="4" ng-maxlength="4" valid-number)
+            label(for="ano_publicacion" class="" data-error="Valor inválido.") Año de Publicación
+          .input-field.col.s6
+            input(id="duracion" type="number" class="validate" ng-model="nueva.duracion" required)
+            label(for="duracion" class="" data-error="Valor inválido.") Duración
+          .input-field.col.s6
+            input(id="clasificacion" type="text" class="validate" ng-model="nueva.clasificacion" required)
+            label(for="clasificacion" class="" data-error="Valor inválido.") Clasificación
+          .input-field.col.s12
+            input(id="formato" type="text" class="validate" ng-model="nueva.formato" required)
+            label(for="formato" class="" data-error="Valor inválido.") Formáto
+          .col.s12
+            label(for="generos" class="") Generos
+            select(id="generos" class="browser-default" ng-options="opt.nombre for opt in generosPeliculas track by opt.idGenero" ng-model="nueva.generos" multiple required)
+          br
+          .col.s12
+            label(for="directores" class="") Directores
+            select(id="directores" ng-options="opt.nombre+' '+opt.apellido for opt in directores track by opt.idDirector" ng-model="nueva.directores" multiple class="browser-default" required)
+          br
+          .col.s6
+            label(for="actores" class="") Actores
+            select(id="actores" ng-options="opt.nombre+' '+opt.apellido for opt in actores track by opt.idActor" ng-model="nueva.actores" multiple class="browser-default" required)
+          .col.s6
+            .row
+              .col.s12(ng-hide="nueva.actores.length > 0")
+                p Seleccione al menos un actor.
+              .input-field.col.s12(ng-repeat="actor in nueva.actores")
+                input(type="text" ng-model="nueva.actores[actor.idActor - 1].actorComo" name="actorComo" id="actorComo" class="validate" required)
+                label(for="actorComo" class="" data-error="Valor inválido.") Personaje de {{ actor.nombre + ' ' + actor.apellido }}
+
+          br
+          .input-field.col.s12
+            input(id="movie_source" type="url" class="validate" ng-model="nueva.movie_source" required)
+            label(for="movie_source" class="" data-error="Valor inválido.") Ubicación de la película
+          .input-field.col.s12
+            input(id="trailer_source" type="url" class="validate" ng-model="nueva.trailer_source" required)
+            label(for="trailer_source" class="" data-error="Valor inválido.") Ubicación del trailer
+          .input-field.file-field.col.s12
+            .btn
+              span Poster
+              input(id="poster" name="poster" type="file" accept="image/*" fileread="nueva.poster" required)
+            .file-path-wrapper
+              input(class="file-path validate" type="text" placeholder="Poster de la película")
+
+
+          .row
+            .col.s12
+              button(type="submit" class="btn waves-effect waves-light") guardar
+                i(class="material-icons left") save
+
+              button(type="reset" class="btn waves-effect waves-effect red darken-4 right") limpiar
+                i(class="material-icons left") delete
+
+  script
+    include ./js/movie_detail.js

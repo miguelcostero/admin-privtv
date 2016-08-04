@@ -1,6 +1,11 @@
 extends layouts/navbar.pug
 
 block content
+  .row
+    .col.s12
+      a(href="#/dashboard/movies/nueva" class="waves-effect waves-light btn") NUEVA PELICULA
+        i(class="material-icons right") send
+
   .row(ng-repeat="pelicula in peliculas")
     .col.s12
       .card.grey.lighten-4.hoverable

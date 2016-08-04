@@ -12,11 +12,23 @@ app.controller("dashboardController", function ($rootScope, $cookies, $location,
   $rootScope.datos_admin = $cookies.getObject("login")
 })
 
-app.controller("moviesController", function ($scope, $rootScope, $route, $routeParams, $cookies, $location, peliculas, peliculas_admin) {
+app.controller("moviesController", function ($scope, $rootScope, $route, $routeParams, $cookies, $location, peliculas, peliculas_admin, generos, actor, director) {
   $rootScope.mensaje = ""
   if (!_.isEqual($cookies.get("islogged"), "true")) {
     $location.path("/")
   }
+
+  generos.get({}, {}, function (data) {
+    $scope.generosPeliculas = data;
+  })
+
+  director.get({}, {}, function (data) {
+    $scope.directores = data;
+  })
+
+  actor.get({}, {}, function (data) {
+    $scope.actores = data;
+  })
 
   if ($routeParams.id_movie) {
     $scope.algo = $routeParams.id_movie
@@ -38,5 +50,12 @@ app.controller("moviesController", function ($scope, $rootScope, $route, $routeP
         $route.reload()
       })
     }
+  }
+
+  $scope.nueva_pelicula = function () {
+    peliculas_admin.nueva({}, { datos: $scope.nueva }, function (data) {
+      console.log(data);
+      $rootScope.mensaje = "Se ha guardado correctamente la pelicula en la base de datos.";
+    })
   }
 })

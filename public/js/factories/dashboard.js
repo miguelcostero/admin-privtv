@@ -14,13 +14,36 @@ app.factory("peliculas_admin", function ($resource) {
     update: {
       method: "PUT"
     },
-    post: {
+    nueva: {
       method: "POST"
     },
     delete: {
       method: "DELETE"
     }
   })
+})
+
+app.factory("actor", function ($resource) {
+  return $resource("http://api-privtv.rhcloud.com/admin/actores/:id_actor", { id_actor: "@id_actor" }, {
+    get: {
+      method: "GET", isArray: true
+    }
+  })
+})
+
+app.factory("director", function ($resource) {
+  return $resource("http://api-privtv.rhcloud.com/admin/directores/:id_director", { id_actor: "@id_director" }, {
+    get: {
+      method: "GET", isArray: true
+    }
+  })
+})
+
+app.factory("generos", function ($resource) {
+  return $resource("http://api-privtv.rhcloud.com/generos/:id_genero",
+      { id_genero: "@id_genero" },
+      { get: { method: "GET", isArray: true }
+    })
 })
 
 app.factory("generoPelicula", function ($resource) {
