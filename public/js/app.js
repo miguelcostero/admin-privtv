@@ -21,5 +21,9 @@ angular.module("adminApp", ["ngResource", "ngRoute", "ngCookies"])
         controller: "moviesController",
         templateUrl: "partials/movies_detail"
       })
+      .when("/dashboard/clients", {
+        controller: "clientsController",
+        templateUrl: "partials/clients"
+      })
       .otherwise("/")
   })

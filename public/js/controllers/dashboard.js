@@ -59,3 +59,14 @@ app.controller("moviesController", function ($scope, $rootScope, $route, $routeP
     })
   }
 })
+
+app.controller("clientsController", function ($scope, $rootScope, $cookies, $location, Clientes) {
+  $rootScope.mensaje = ""
+  if (!_.isEqual($cookies.get("islogged"), "true")) {
+    $location.path("/")
+  }
+
+  Clientes.get({}, {}, function (data) {
+    $scope.clientes = data;
+  })
+})

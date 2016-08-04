@@ -1,0 +1,36 @@
+extends layouts/navbar.pug
+
+block content
+  div
+    .row(ng-show="mensaje.length > 0")
+      .col.s12
+        .card-panel.green.white-text
+          p {{mensaje}}
+
+    .row
+      .col.s12
+        table(class="bordered highlight")
+          thead
+            tr
+              th ID
+              th EMAIL
+              th FECHA NACIMIENTO
+              th NOMBRE
+              th APELLIDO
+              th TELÉFONO
+              th DIRECCIÓN
+              th ID SUSCRIPCIÓN
+              th FECHA REGISTRO
+              th SUSPENDIDO
+          tbody
+            tr(ng-repeat="cliente in clientes")
+              td {{ cliente.idCliente }}
+              td {{ cliente.email }}
+              td {{ cliente.fecha_nacimiento | date: 'dd - MM - yyyy' }}
+              td {{ cliente.nombre }}
+              td {{ cliente.apellido }}
+              td {{ cliente.telefono }}
+              td {{ cliente.direccion }}
+              td {{ cliente.tipo_suscripcion_id_tipo_suscripcion }}
+              td {{ cliente.fecha_registro | date: 'dd - MM - yyyy' }}
+              td {{ cliente.suspendido }}
