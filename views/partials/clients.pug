@@ -33,4 +33,7 @@ block content
               td {{ cliente.direccion }}
               td {{ cliente.tipo_suscripcion_id_tipo_suscripcion }}
               td {{ cliente.fecha_registro | date: 'dd - MM - yyyy' }}
-              td {{ cliente.suspendido }}
+              td(ng-if="cliente.suspendido === 'true'")
+                a(class="waves-effect waves-light orange darken-2 btn" ng-click="activar(cliente)") activar
+              td(ng-if="cliente.suspendido === 'false'")
+                a(class="waves-effect waves-light red darken-2 btn" ng-click="suspender(cliente)") suspender

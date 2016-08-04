@@ -74,15 +74,15 @@ app.factory("directoresPelicula", function ($resource) {
 })
 
 app.factory("Clientes", function ($resource) {
-  return $resource("http://api-privtv.rhcloud.com/admin/Clientes/:id_clientes", { id_clientes:"@id_clientes" }, {
+  return $resource("http://api-privtv.rhcloud.com/admin/clientes/:id_cliente", { id_cliente:"@id_cliente" }, {
     get: {
       method: "GET", isArray: true
     },
     suspender: {
-      method: "PATCH"
+      method: "PATCH", isArray: true
     },
-    desuspender: {
-      method: "PUT"
+    activar: {
+      method: "PUT", isArray: true
     }
   })
 })

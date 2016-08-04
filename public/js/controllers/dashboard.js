@@ -69,4 +69,18 @@ app.controller("clientsController", function ($scope, $rootScope, $cookies, $loc
   Clientes.get({}, {}, function (data) {
     $scope.clientes = data;
   })
+
+  $scope.activar = function (cliente) {
+    Clientes.activar({ id_cliente:cliente.idCliente }, {}, function (data) {
+      $scope.clientes = data;
+      $rootScope.mensaje = "Se ha activado el cliente correctamente.";
+    })
+  }
+
+  $scope.suspender = function (cliente) {
+    Clientes.suspender({ id_cliente:cliente.idCliente }, {}, function (data) {
+      $scope.clientes = data;
+      $rootScope.mensaje = "Se ha suspendido el cliente correctamente."
+    })
+  }
 })
